@@ -90,16 +90,18 @@ blockquote {
 .login-form {
     height: 300px;
     width: 400px;
-  
     text-align: center;
-    background-color: #1976D2;
+    background-color: inherit;
     padding: 20px;
+    border-radius: 30px;
+    border: 3px solid #1976D2;
 }
 
 .login-title {
     font-size: 40px;
     font-weight: bold;
     margin: 20px 0;
+    color: #1976D2;
 }
 
 .form-group {
@@ -117,6 +119,7 @@ blockquote {
     width: 75%;
     background-color: #F1F3F2;
     padding: 10px 30px;
+    border-radius: 10px;
 }
 
 .login-form .form-group + .form-group {
