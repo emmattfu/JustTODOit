@@ -66,6 +66,7 @@ blockquote {
     border-radius: 10px;
     border: 2px solid white;
     font-size: 18px;
+    margin-left: -20px;
 }
 
 .form-control {
@@ -207,4 +208,15 @@ blockquote {
     font-size: 40px;
     color: #1976D2;
 }
-/* === todo list styles start === */
+/* === todo list styles end === */
+
+/* === todo item styles start === */
+.todo-item {
+    border: 1px solid #1976D2;
+    padding: 30px;
+    border-radius: 30px;
+    margin-top: 20px;
+    width: 500px;
+}
+
+/* === todo item styles end === */
