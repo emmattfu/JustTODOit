@@ -13,12 +13,7 @@ export default class List extends Component {
 
     onInit() {
         console.log('list Init')
-        // let form = document.querySelector('.add-todo-form');
-        // form.addEventListener('submit', (e) => {
-        //     e.preventDefault()
-        //     this.todos.push(form.elements[0].value)
-        //     this.render();
-        // })
+   
     }
 
     get todos() {
@@ -39,23 +34,39 @@ export default class List extends Component {
     }
 
     render() {
-        this.anchor.innerHTML = ''
-        this.todosArray.forEach(el => {
-            let item = document.createElement('todo-item');
-            item.setAttribute('text', el)
-            this.anchor.innerHTML = item;
-        })
+        return `
+        <div class="todo-list">
+        <div class="container">
+            <div class="todo-list-inner">
+                    
+                <div class="todo">
+                    <h2 class="greating">Lets do them all!</h2>
+                    <form class="add-todo-form">
+                        <input class="form-control big" type="text" placeholder="New task">
+                        <input class="form-control todo-form-submit" type="submit" value="Add task">
+                    </form>
+                    <div class="list">
+                        ${this.todosArray.map(el => `<todo-item text="${el}"></todo-item>`)}
+                    </div>
+                </div>
 
+                <div class="todo-info">
+                    <div class="todo-info-text">Tasks: ${this.todos.length}</div>
+                    <div class="todo-info-text">Finished tasks: 0</div>
+                    <div class="todo-info-text">In progress tasks: 0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `
     }
 
     setupListeners() {
-       
-        // this.anchor.querySelector('form').addEventListener('submit', e => {
-        //     e.preventDefault();
-        //     this.todos.push(this.anchor.querySelector('form').elements[0].value)
-        //     console.log(this.todos)
-        //     this.render();
-        // })
+        this.anchor.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.todos.push(this.anchor.querySelector('form').elements[0].value)
+            
+        })
     }
 }
 
@@ -70,30 +81,11 @@ export default class List extends Component {
         // })
 
 
-    //     <div class="todo-list">
-    //     <div class="container">
-    //         <div class="todo-list-inner">
-                    
-    //             <div class="todo">
-    //                 <h2 class="greating">Lets do them all!</h2>
-    //                 <form class="add-todo-form">
-    //                     <input class="form-control big" type="text" placeholder="New task">
-    //                     <input class="form-control todo-form-submit" type="submit" value="Add task">
-    //                 </form>
-    //                 <div class="list">
-    //                     ${this.todosArray.map(el => {
-    //                         let item = document.createElement('todo-item');
-    //                         item.setAttribute('text', el)
-    //                         return (item)
-    //                     })}
-    //                 </div>
-    //             </div>
+   
 
-    //             <div class="todo-info">
-    //                 <div class="todo-info-text">Tasks: ${this.todos.length}</div>
-    //                 <div class="todo-info-text">Finished tasks: 0</div>
-    //                 <div class="todo-info-text">In progress tasks: 0</div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
+         // let form = document.querySelector('.add-todo-form');
+        // form.addEventListener('submit', (e) => {
+        //     e.preventDefault()
+        //     this.todos.push(form.elements[0].value)
+        //     this.render();
+        // })

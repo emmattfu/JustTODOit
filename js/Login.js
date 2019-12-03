@@ -11,8 +11,9 @@ export default class Login extends Component {
     }
 
     render() {
+        this.anchor.classList.add('login');
+
         return `
-    <div class="login">
         <form class="login-form">
             <p class="login-title white-text">LOGIN</p>
             <div class="form-group">
@@ -26,7 +27,7 @@ export default class Login extends Component {
             
             <input class="form-control form-submit" type="submit" value="Login">
         </form>
-    </div>
+   
     `
     }
 
