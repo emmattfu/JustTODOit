@@ -7,12 +7,10 @@ import Router from './Router.js';
 //   document.querySelector('.login').style.display = 'none';
 // }
 
-const router = new Router(document.body)
+const router = new Router(document.querySelector('#main'))
 
 window.addEventListener('changeRoute', (event) => {
   router.changeRoute(event.detail.route);
-  console.log(event)
 })
 
 window.dispatchEvent(new CustomEvent('changeRoute', {detail: {route: 'login'}}));
-

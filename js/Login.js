@@ -6,6 +6,10 @@ export default class Login extends Component {
         this.anchor = document.createElement('div')
     }
 
+    onInit() {
+        console.log('Login init')
+    }
+
     render() {
         return `
     <div class="login">
@@ -27,6 +31,9 @@ export default class Login extends Component {
     }
 
     setupListeners() {
-        
+        this.anchor.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.dispatchEvent(new CustomEvent('changeRoute', {detail: {route: 'todoList'}}));
+        })
     }
 }

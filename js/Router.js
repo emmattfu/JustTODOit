@@ -6,30 +6,35 @@ export default class Router {
         this.anchor = anchor;
         this.routerConfig = {
             'login': {
-                'data': {},
+                'data': {'route': 'login'},
                 'url': 'login',
                 'component': LoginComponent
             },
             'todoList': {
-                'data': {},
+                'data': {'route': 'todoList'},
                 'url': 'todoList',
                 'component': TodoComponent
             }
         }
+
+        window.addEventListener('popstate', e => {
+            this.changeRoute(e.state.route)
+        })
     }
 
     changeRoute(route) {
-       
         const conf = this.routerConfig[route]
-
         if(!conf) return;
+        window.history.pushState(conf.data, '', conf.url)
 
         const component = new conf.component();
 
+        component.onInit()
         const dom = component.dom;
-       
+   
         if (this.currentComponent) {
-            this.anchor.innerHTM = '';
+
+            this.anchor.innerHTML = '';
             this.anchor.appendChild(dom)
         } else {
             this.anchor.appendChild(dom)
