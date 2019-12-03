@@ -1,8 +1,9 @@
 import Todo from './Todo.js';
+import Component from './Component.js'
 
 customElements.define('todo-item', Todo);
 
-export default class List {
+export default class List extends Component {
     constructor() {
         this.todos = ['Wash my car', 'Learn JS', 'Say hello to Jess']
         this.onInit();  
@@ -43,5 +44,9 @@ export default class List {
             item.setAttribute('text', el)
             todoList.append(item);
         })
+    }
+
+    setupListeners() {
+
     }
 }
