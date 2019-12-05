@@ -173,9 +173,9 @@ blockquote {
 }
 
 .todo-info {
-    width: 400px;
-    height: 400px;
+    padding: 20px;
     background-color: #1976D2;
+    max-height: 100px;
 }
 
 .todo-info-text {

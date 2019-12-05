@@ -3,7 +3,7 @@ import Component from './Component.js';
 export default class Login extends Component {
     constructor(anchor) {
         super();
-        this.anchor = document.createElement('div')
+        this.anchor = anchor
     }
 
     onInit() {

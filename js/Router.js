@@ -18,8 +18,9 @@ export default class Router {
         }
 
         window.addEventListener('popstate', e => {
-            this.changeRoute(e.state.route)
+          this.changeRoute(e.state.route)
         })
+
     }
 
     changeRoute(route) {
@@ -27,13 +28,12 @@ export default class Router {
         if(!conf) return;
         window.history.pushState(conf.data, '', conf.url)
 
-        const component = new conf.component();
+        const component = new conf.component(document.createElement('div'));
 
         component.onInit()
         const dom = component.dom;
    
         if (this.currentComponent) {
-
             this.anchor.innerHTML = '';
             this.anchor.appendChild(dom)
         } else {

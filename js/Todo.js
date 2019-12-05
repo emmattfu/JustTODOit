@@ -1,4 +1,4 @@
-const template = document.createElement('template');
+const template = document.createElement("template");
 template.innerHTML = `
 <style>
 .todo-item {
@@ -7,26 +7,32 @@ template.innerHTML = `
     border-radius: 30px;
     margin-top: 20px;
     width: 500px;
+    font-size: 18px;
+}
+
+.todo-item:hover {
+    background: #1976D2;
+    color: white;
 }
 </style>
 <div class="todo-item">
-    <p class="todo-item-text">text</p>
+    <p class="todo-item-text"></p>
 </div>
-`
+`;
 
 export default class Todo extends HTMLElement {
-    constructor() {
-        super();
-        this.root = this.attachShadow({mode: 'open'});
-    }
+  constructor() {
+    super();
+    this.root = this.attachShadow({ mode: "open" });
+  }
 
-    render() {
-        const temp = template.content.cloneNode(true);
-        temp.querySelector('.todo-item-text').textContent = this.getAttribute('text')
-        this.root.append(temp)
-    }
+  render() {
+    const temp = template.content.cloneNode(true);
+    temp.querySelector(".todo-item-text").textContent = this.getAttribute("text");
+    this.root.append(temp);
+  }
 
-    connectedCallback() {
-        this.render()
-    }
+  connectedCallback() {
+    this.render();
+  }
 }
