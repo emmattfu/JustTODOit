@@ -1,9 +1,4 @@
-import Todo from './Todo.js';
 import Component from './Component.js';
-import NewTodo from './NewTodo.js'
-
-customElements.define('todo-item', Todo);
-customElements.define('new-todo', NewTodo);
 
 export default class List extends Component {
     constructor(anchor) {
@@ -13,6 +8,10 @@ export default class List extends Component {
     }
 
     onInit() {
+        this.anchor.addEventListener('submit', e => {
+            e.preventDefault();
+            this.addTodo(e.target.elements[0].value)
+        })
         console.log('list Init')
     }
 
@@ -42,9 +41,13 @@ export default class List extends Component {
             <div class="container">
                 <div class="todo-list-inner">
                     <div class="todo">
-                        <new-todo></new-todo> 
+                        <h2 class="greating">Lets do them all!</h2>
+                        <form class="add-todo-form">
+                            <input class="form-control big" type="text" placeholder="New task">
+                            <input class="form-control todo-form-submit" type="submit" value="Add task">
+                        </form>
 
-                        ${this.todosArray.map(el => `<todo-item text="${el}"></todo-item>`)}
+                        ${this.todosArray.map(el => `<todo-item text="${el}"></todo-item>`).reverse()}
                     </div>
 
                     <div class="todo-info">
@@ -89,8 +92,4 @@ export default class List extends Component {
         //     this.render();
         // })
 
-        // <h2 class="greating">Lets do them all!</h2>
-        //             <form class="add-todo-form">
-        //                 <input class="form-control big" type="text" placeholder="New task">
-        //                 <input class="form-control todo-form-submit" type="submit" value="Add task">
-        //             </form>
+      

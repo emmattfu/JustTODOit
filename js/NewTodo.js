@@ -65,12 +65,12 @@ export default class NewTodo extends HTMLElement {
     render() {
         const temp = template.content.cloneNode(true);
       
-        temp.querySelector('form').addEventListener('submit', event => {
-            event.preventDefault();
-            const list = new List(document.createElement('div'));
+        // temp.querySelector('form').addEventListener('submit', event => {
+        //     event.preventDefault();
+        //     const list = new List(document.createElement('div'));
         
-            list.addTodo(this.root.querySelector('form').elements[0].value)
-        })
+        //     list.addTodo(this.root.querySelector('form').elements[0].value)
+        // })
         this.root.append(temp);
     }
 
