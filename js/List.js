@@ -1,13 +1,16 @@
 import Component from './Component.js';
 
+
 export default class List extends Component {
     constructor(anchor) {
         super();
-        this.anchor = anchor
+
+        this.anchor = anchor;
         this.todos = ['Wash my car', 'Learn JS', 'Say hello to Jess']
     }
 
     onInit() {
+
         this.anchor.addEventListener('submit', e => {
             e.preventDefault();
             this.addTodo(e.target.elements[0].value)
@@ -20,18 +23,25 @@ export default class List extends Component {
     }
 
     onTodosChange() {
-      
+      let newInfo = document.createElement('todo-info');
+      newInfo.setAttribute('tasks', this.todosArray.length)
+   
+      let oldInfo = document.querySelector('todo-info');
+  
+      let parent = document.querySelector('.todo-list-inner')
+      parent.replaceChild(newInfo, oldInfo)
     }
 
     set todos(value) {
         this.todosArray = value
-        this.onTodosChange()
+
     }
 
     addTodo(elem) {
         this.anchor.innerHTML = ''
         this.todosArray.push(elem);
         this.anchor.innerHTML = this.render();
+        this.onTodosChange()
     }
 
     render() {
@@ -50,11 +60,8 @@ export default class List extends Component {
                         ${this.todosArray.map(el => `<todo-item text="${el}"></todo-item>`).reverse()}
                     </div>
 
-                    <div class="todo-info">
-                        <div class="todo-info-text">Tasks: ${this.todos.length}</div>
-                        <div class="todo-info-text">Finished tasks: 0</div>
-                        <div class="todo-info-text">In progress tasks: 0</div>
-                    </div>
+                  
+                    <todo-info tasks="${this.todosArray.length}"></todo-info>
                 </div>
             </div>
         </div>
@@ -62,13 +69,7 @@ export default class List extends Component {
     }
 
     setupListeners() {
-        console.log(this.anchor.querySelector('#shadow-root'))
-        //  let form = this.anchor.querySelector('form');
-        //  form.addEventListener('submit', e => {
-        //      e.preventDefault();
-        //      this.addTodo(form.elements[0].value)
-      
-        // })
+     
     }
 }
 
