@@ -220,3 +220,7 @@ blockquote {
 }
 
 /* === todo item styles end === */
+
+i {
+    font-size: 30px;
+}

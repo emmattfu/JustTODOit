@@ -29,8 +29,9 @@ export default class TodoInfo extends HTMLElement {
        
     }
 
-    render(info) {
+    render() {
         const temp = template.content.cloneNode(true);
+        console.log(this.getAttribute('tasks'))
         temp.querySelector('[data-text=tasks]').textContent = `Tasks to do: ${this.getAttribute('tasks')}`
         this.shadowRoot.append(temp);
         
