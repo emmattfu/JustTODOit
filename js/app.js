@@ -8,10 +8,23 @@ customElements.define('todo-item', Todo);
 customElements.define('new-todo', NewTodo);
 customElements.define('todo-info', TodoInfo);
 
-const router = new Router(document.querySelector('#main'));
 
-window.addEventListener('changeRoute', (event) => {
-  router.changeRoute(event.detail.route);
-})
+export default class Controller {
+  constructor() {
+    this.router = new Router(document.querySelector('#main'));
+    this.onInit()
+  }
 
-window.dispatchEvent(new CustomEvent('changeRoute', {detail: {route: 'login'}}));
+  onInit() {
+    this.setupEvents();
+    window.dispatchEvent(new CustomEvent('changeRoute', {detail: {route: 'login'}}));
+  }
+
+  setupEvents() {
+    window.addEventListener('changeRoute', (event) => {
+      this.router.changeRoute(event.detail.route);
+    })
+  }
+}
+
+const controller = new Controller();

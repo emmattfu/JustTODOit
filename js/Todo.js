@@ -44,9 +44,6 @@ input {
     <p class="todo-item-text"></p>
     <slot name="delete"></slot>
 </div>
-
-
-
 `;
 
 export default class Todo extends HTMLElement {
@@ -61,7 +58,6 @@ export default class Todo extends HTMLElement {
     temp.querySelector(".todo-item-text").textContent = this.getAttribute("text");
     temp.querySelector('.todo-item').setAttribute('status', this.getAttribute('status'))
     this.root.append(temp);
-
   }
 
   editTodo() {

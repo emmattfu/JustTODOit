@@ -223,4 +223,11 @@ blockquote {
 
 i {
     font-size: 30px;
+    opacity: 0;
+}
+
+
+
+todo-item:hover i {
+     opacity: 100%;
 }
